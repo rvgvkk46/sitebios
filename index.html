@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #00008B;
+            color: white;
+            font-family: 'Roboto Mono', monospace;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .bios-container {
+            width: 100vw;
+            height: 100vh;
+            background-color: #A9A9A9;
+            border: 3px solid white;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-bar {
+            background-color: #00008B;
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 5px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .menu-bar div.active {
+            text-decoration: underline;
+        }
+
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 10px;
+            justify-content: space-between;
+            font-size: 16px;
+        }
+
+        .left-panel {
+            width: 65%;
+            background-color: #D3D3D3;
+            padding: 15px;
+            color: black;
+            border-right: 2px solid gray;
+        }
+
+        .right-panel {
+            width: 30%;
+            background-color: #D3D3D3;
+            padding: 15px;
+            color: black;
+            font-size: 14px;
+            border-left: 2px solid gray;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .table td {
+            padding: 5px 10px;
+            border-bottom: 1px solid gray;
+        }
+
+        .menu-item::before {
+            content: "▶ ";
+            color: blue;
+        }
+
+        .blinking-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 16px;
+            background-color: black;
+            margin-left: 5px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        .bottom-bar {
+            background-color: #00008B;
+            color: white;
+            text-align: center;
+            padding: 5px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body onload="updateTime()">
+
+    <div class="bios-container">
+        <div class="menu-bar">
+            <div class="active">Main</div>
+            <div>Проекты</div>
+            <div>Био</div>
+            <div>Сыллки</div>
+            <div>Tools</div>
+            <div>Exit</div>
+        </div>
+        <div class="content">
+            <div class="left-panel">
+                <h3>Информация</h3>
+                <table class="table">
+                    <tr>
+                        <td>Мой ник</td>
+                        <td>rvg.dll, sinlain</td>
+                    </tr>
+                    <tr>
+                        <td>Delevoper</td>
+                        <td>python, php</td>
+                    </tr>
+                    <tr>
+                        <td>Code</td>
+                        <td>VS Code</td>
+                    </tr>
+                    <tr>
+                        <td>Language</td>
+                        <td>[ English ]</td>
+                    </tr>
+                </table>
+
+                <h3>Связь со мной</h3>
+                <table class="table">
+                    <tr>
+                        <td class="menu-item">Discord</td>
+                        <td>[ @rvgvkk46 ]</td>
+                    </tr>
+                    <tr>
+                        <td class="menu-item">Telegram</td>
+                        <td>[ @tcpippoter ]</td>
+                    </tr>
+                    <tr>
+                        <td class="menu-item">Vk</td>
+                        <td>[ @kpatsy ]</td>
+                    </tr>
+                    <tr>
+                        <td class="menu-item">Студия</td>
+                        <td>[ VK: @modsdev ]</td>
+                    </tr>
+                </table>
+                <p style="margin-top: 20px;">Ожидание<span class="blinking-cursor"></span></p>
+            </div>
+
+            <div class="right-panel">
+                <h3>Navigation</h3>
+                <p><strong>← →</strong> в будещем</p>
+                <p><strong>↑ ↓</strong> в будущем</p>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            by rvg.dll tipo bio
+        </div>
+    </div>
+
+    <script>
+        function updateTime() {
+            let now = new Date();
+            let hours = String(now.getHours()).padStart(2, '0');
+            let minutes = String(now.getMinutes()).padStart(2, '0');
+            let seconds = String(now.getSeconds()).padStart(2, '0');
+            let date = String(now.getDate()).padStart(2, '0');
+            let month = String(now.getMonth() + 1).padStart(2, '0');
+            let year = now.getFullYear();
+
+            document.getElementById("system-time").innerText = `[ ${hours}:${minutes}:${seconds} ]`;
+            document.getElementById("system-date").innerText = `[ ${month}/${date}/${year} ]`;
+
+            setTimeout(updateTime, 1000);
+        }
+    </script>
+
+</body>
+</html>
